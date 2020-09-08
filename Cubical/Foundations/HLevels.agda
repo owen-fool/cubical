@@ -304,6 +304,9 @@ isPropΠ4 h = isPropΠ λ _ → isPropΠ3 λ _ → h _ _
 isPropImplicitΠ : (h : (x : A) → isProp (B x)) → isProp ({x : A} → B x)
 isPropImplicitΠ h f g i {x} = h x (f {x}) (g {x}) i
 
+--isSetImplicitΠ : (h : (x : A) → isSet (B x)) → isSet ({x : A} → B x)
+--isSetImplicitΠ h f g p q = {!!}
+
 isProp→ : {A : Type ℓ} {B : Type ℓ'} → isProp B → isProp (A → B)
 isProp→ pB = isPropΠ λ _ → pB
 
