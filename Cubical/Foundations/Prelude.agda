@@ -252,6 +252,12 @@ funExt⁻ : {B : A → I → Type ℓ'}
   → ((x : A) → PathP (B x) (f x) (g x))
 funExt⁻ eq x i = eq i x
 
+implicitFunExt⁻ : {ℓ ℓ' : Level} {A : Type ℓ} {B : A → I → Type ℓ'}
+  {f : {x : A} → B x i0} {g : {x : A} → B x i1}
+  → PathP (λ i → {x : A} → B x i) f g
+  → ((x : A) → PathP (B x) (f {x}) (g {x}))
+implicitFunExt⁻ eq x i = eq i {x}
+
 -- J for paths and its computation rule
 
 module _ (P : ∀ y → x ≡ y → Type ℓ') (d : P x refl) where

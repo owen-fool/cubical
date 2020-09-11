@@ -17,6 +17,26 @@ private
 
 -- Function extensionality is an equivalence
 module _ {A : Type ℓ} {B : A → I → Type ℓ₁}
+  {f : {x : A} → B x i0} {g : {x : A} → B x i1} where
+
+  private
+   fib : (p : PathP (λ i → ∀ {x} → B x i) f g) → fiber implicitFunExt p
+   fib p = (λ {x} → implicitFunExt⁻ {ℓ} {ℓ₁} {A} {B} p x) , refl
+
+   implicitFunExt-fiber-isContr : ∀ p → (fi : fiber implicitFunExt p) → fib p ≡ fi
+   implicitFunExt-fiber-isContr p (h , eq) i =
+    (λ {x} → implicitFunExt⁻ {ℓ} {ℓ₁} {A} {B} (eq (~ i)) x) , λ j → eq (~ i ∨ j)
+
+  implicitFunExt-isEquiv : isEquiv implicitFunExt
+  equiv-proof implicitFunExt-isEquiv p = fib p , implicitFunExt-fiber-isContr p
+
+  implicitFunExtEquiv : (∀ {x} → PathP (B x) (f {x}) (g {x})) ≃ PathP (λ i → ∀ {x} → B x i) f g
+  implicitFunExtEquiv = implicitFunExt , implicitFunExt-isEquiv
+
+  implicitFunExtPath : (∀ {x} → PathP (B x) (f {x}) (g {x})) ≡ PathP (λ i → ∀ {x} → B x i) f g
+  implicitFunExtPath = ua implicitFunExtEquiv
+
+module _ {A : Type ℓ} {B : A → I → Type ℓ₁}
   {f : (x : A) → B x i0} {g : (x : A) → B x i1} where
 
   private
