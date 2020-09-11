@@ -1,3 +1,6 @@
+File Contains a Proof that, if a category 𝓒 is univalent, then all functor precategories where 𝓒
+is the target of the functors are univalent as well.
+
 \begin{code}
 {-# OPTIONS --cubical --no-import-sorts --safe #-}
 
@@ -163,19 +166,5 @@ UnivEquiv {ℓ𝒞} {ℓ𝒞'} {ℓ𝒟} {ℓ𝒟'} 𝓒 𝓓 isUniv-𝓓 F G =
        (idtoiso 𝓓 (fst F x) (fst G x) (λ i → (fst (a i) x)))) ≡⟨ cong (λ - → funExt (λ x → (- x))) (funExt (λ x → Iso.leftInv (equivToIso ((idtoiso 𝓓 (fst F x) (fst G x)) , (isUniv-𝓓 (fst F x) (fst G x)))) λ i → fst (a i) x)) ⟩
       funExt (λ x → (λ i → (fst (a i) x))) ≡⟨ refl ⟩
       (λ i → fst (a i)) ∎) λ i → snd (isotoid 𝓒 𝓓 isUniv-𝓓 F G (idtoiso (FUNCTOR 𝓒 𝓓) F G a) i))
-  {- λ a i → ΣPathP (funExt (λ x →
-   (Iso.inv (equivToIso ((idtoiso 𝓓 (𝐹[⟦ 𝓒 ⟧⟦ 𝓓 ⟧ F ] x) (𝐹[⟦ 𝓒 ⟧⟦ 𝓓 ⟧ G ] x)) ,
-  isUniv-𝓓 (𝐹[⟦ 𝓒 ⟧⟦ 𝓓 ⟧ F ] x) (𝐹[⟦ 𝓒 ⟧⟦ 𝓓 ⟧ G ] x)))
-  (NatTransIsoLeft 𝓒 𝓓 F G x (idtoiso (FUNCTOR 𝓒 𝓓) F G a))
-     ≡⟨ cong (λ - →
-               Iso.inv (equivToIso ((idtoiso 𝓓 (𝐹[⟦ 𝓒 ⟧⟦ 𝓓 ⟧ F ] x) (𝐹[⟦ 𝓒 ⟧⟦ 𝓓 ⟧ G ] x)) ,
-                isUniv-𝓓 (𝐹[⟦ 𝓒 ⟧⟦ 𝓓 ⟧ F ] x) (𝐹[⟦ 𝓒 ⟧⟦ 𝓓 ⟧ G ] x)))
-                -) (NatTransIsoLeftLemma 𝓒 𝓓 F G a x) ⟩
-    Iso.inv (equivToIso ((idtoiso 𝓓 (𝐹[⟦ 𝓒 ⟧⟦ 𝓓 ⟧ F ] x) (𝐹[⟦ 𝓒 ⟧⟦ 𝓓 ⟧ G ] x)) ,
-  isUniv-𝓓 (𝐹[⟦ 𝓒 ⟧⟦ 𝓓 ⟧ F ] x) (𝐹[⟦ 𝓒 ⟧⟦ 𝓓 ⟧ G ] x)))
-  (idtoiso 𝓓 (fst F x) (fst G x) (λ j → fst (a j) x))
-     ≡⟨ Iso.leftInv (equivToIso (idtoiso 𝓓 (fst F x) (fst G x) , isUniv-𝓓 (fst F x) (fst G x)))
-     (λ j → fst (a j) x) ⟩
-    (λ j  → fst (a j) x) ∎) i) ,
-  funExt⁻ {!!} a))-}
+
 \end{code}

@@ -242,3 +242,5 @@ CatIsoIden 𝓒 x y (γ , γ⁻¹ , γp , γq) (δ , δ⁻¹ , δp , δq) p =
  ΣPathP (p , (ΣPathP ((CatIsoIdenAux 𝓒 x y γ δ γ⁻¹ δ⁻¹ p γq γp δq δp) ,
   toPathP (isProp× (𝒽-sets⟦ 𝓒 ⟧ _ _) (𝒽-sets⟦ 𝓒 ⟧ _ _) _ _))))
 
+
+
