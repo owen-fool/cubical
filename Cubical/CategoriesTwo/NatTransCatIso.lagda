@@ -1,6 +1,10 @@
-File Contains a Proof that, if a category 𝓒 is univalent, then all functor precategories where 𝓒
+File contains a proof that, if a category 𝓒 is univalent, then all functor precategories where 𝓒
 is the target of the functors are univalent as well.
 
+The proof is essentially a formalisation of what's in the HoTT book, that proof also appears in
+`Univalent categories and the Rezk completion' by Ahrens, Kapulkin and Shulman.
+
+Hopefully I will get around to cleaning it up soon.
 \begin{code}
 {-# OPTIONS --cubical --no-import-sorts --safe #-}
 
